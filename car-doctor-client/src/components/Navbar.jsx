@@ -66,7 +66,7 @@ const Navbar = () => {
         <AiOutlineSearch className="text-xl" />
         <Link
           to="/appointment"
-          className="btn border-2 border-orange-500 bg-white text-orange-500"
+          className="btn border-2 border-[#FF3811] bg-white text-[#FF3811]"
         >
           Appointment
         </Link>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-black text-white grid grid-cols-4 justify-between gap-12">
+    <footer className="footer p-10 bg-black text-white grid grid-cols-4 text-base justify-between gap-12">
       <aside className="">
         <div className="flex flex-col items-center ">
           <img src="https://i.ibb.co/rsDP7t7/Group-1.jpg" alt="" />
