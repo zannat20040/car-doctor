@@ -39,7 +39,7 @@ const Service = () => {
         ))}
       </div>
 
-      <div className="text-center  my-10">
+      <div className="text-center  mt-10 mb-28">
         <button className="btn btn-outline  border-[#FF3811] text-[#FF3811] rounded-md">
           More Service
         </button>
