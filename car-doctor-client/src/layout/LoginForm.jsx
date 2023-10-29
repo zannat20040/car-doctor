@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaLinkedinIn, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import swal from "sweetalert";
 
 const LoginForm = () => {
-  const { signInWithGoogle, setUser, signInWithPass } = useContext(AuthContext);
+  const { signInWithGoogle, setUser, signInWithPass,setLoading } = useContext(AuthContext);
+  const location = useLocation()
+  const navigate = useNavigate()
 
   const HandleSignIn = (e) => {
     e.preventDefault();
@@ -14,13 +16,14 @@ const LoginForm = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
 
     signInWithPass(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
         swal("Good job!", "You have logged in sucessfully!", "success");
+        navigate(location?.state?.redirectTo? location?.state?.redirectTo : '/')
+
       })
       .catch((error) => {
         const errorMessage = error.message;
