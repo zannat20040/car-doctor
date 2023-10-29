@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Service = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch("service.json")
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -22,7 +23,7 @@ const Service = () => {
 
       <div className="grid grid-cols-3 gap-5">
         {services.map((service) => (
-          <div className="card bg-base-100 shadow-xl rounded-md">
+          <div className="card bg-base-100 shadow-xl rounded-md" key={service._id}>
             <figure className="px-6 pt-6">
               <img src={service.img} alt="Shoes" className="rounded-md h-52" />
             </figure>
@@ -32,7 +33,9 @@ const Service = () => {
                 <p className="font-medium text-[#FF3811]">
                   Price: ${service.price}
                 </p>
-                <BsArrowRight className="text-[#FF3811]"></BsArrowRight>
+                <Link to={`/details/${service._id}`}>
+                  <BsArrowRight className="text-[#FF3811]"></BsArrowRight>
+                </Link>
               </div>
             </div>
           </div>

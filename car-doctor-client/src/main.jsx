@@ -13,6 +13,8 @@ import SignUpForm from "./layout/SignUpForm";
 import LoginForm from "./layout/LoginForm";
 import AuthenticationNav from "./components/AuthenticationNav";
 import AuthProvider from "./AuthProvider/AuthProvider";
+import Details from "./pages/Details";
+import Checkout from "./layout/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,15 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/details/:id",
+        element: <Details></Details> ,
+        loader:({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+      },
+      {
+        path: "/checkout",
+        element:  <Checkout></Checkout>,
       },
     ],
   },

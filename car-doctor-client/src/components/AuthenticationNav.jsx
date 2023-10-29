@@ -21,7 +21,7 @@ const AuthenticationNav = () => {
     <div className="container mx-auto">
       <div className="navbar bg-base-100 py-5">
         <div className="flex-1">
-          <img src={logo} alt="" />
+          <Link to='/'><img src={logo} alt="" /></Link>
         </div>
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1 text-base font-medium">

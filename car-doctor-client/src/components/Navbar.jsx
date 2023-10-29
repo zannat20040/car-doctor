@@ -7,7 +7,7 @@ const Navbar = () => {
   const navlist = (
     <>
       <li>
-        <Link to="/home">Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
         <Link to="/about">About</Link>
@@ -65,7 +65,7 @@ const Navbar = () => {
         <BsHandbag className="text-xl"></BsHandbag>
         <AiOutlineSearch className="text-xl" />
         <Link
-          to="/appointment"
+          to="/user/login"
           className="btn border-2 border-[#FF3811] bg-white text-[#FF3811]"
         >
           Appointment
