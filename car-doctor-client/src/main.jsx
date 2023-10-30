@@ -11,15 +11,19 @@ import Main from "./pages/Main";
 import Home from "./pages/Home";
 import SignUpForm from "./layout/SignUpForm";
 import LoginForm from "./layout/LoginForm";
-import AuthenticationNav from "./components/AuthenticationNav";
+// import AuthenticationNav from "./components/AuthenticationNav";
 import AuthProvider from "./AuthProvider/AuthProvider";
 import Details from "./pages/Details";
 import Checkout from "./layout/Checkout";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import AddServices from "./layout/AddServices";
+import ErrorPage from "./pages/ErrorPage";
+import Authentication from "./pages/Authentication";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage></ErrorPage>,
     element: <Main></Main>,
     children: [
       {
@@ -35,11 +39,16 @@ const router = createBrowserRouter([
         path: "/checkout",
         element:  <PrivateRoute><Checkout></Checkout></PrivateRoute>,
       },
+      {
+        path: "/addservices",
+        element:  <PrivateRoute><AddServices></AddServices></PrivateRoute>,
+      },
     ],
   },
   {
     path: "/user",
-    element: <AuthenticationNav></AuthenticationNav>,
+    errorElement: <ErrorPage></ErrorPage>,
+    element: <Authentication></Authentication>,
     children: [
       {
         path: "/user/login",

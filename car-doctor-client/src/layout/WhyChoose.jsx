@@ -44,7 +44,7 @@ const WhyChoose = () => {
         </div>
         <div className="border-2 rounded-md  hover:bg-[#FF3811]">
           <div className="card-body p-3 items-center text-center text-black  hover:text-white">
-       <SiSpringsecurity Guranty className="font-extrabold text-7xl hover:text-white"></SiSpringsecurity>
+       <SiSpringsecurity  className="font-extrabold text-7xl hover:text-white"></SiSpringsecurity>
             <h2 className="card-title">100% Guranty</h2>
           </div>
         </div>

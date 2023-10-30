@@ -51,7 +51,7 @@ const AuthenticationNav = () => {
         </div>
       </div>
 
-      <FormCard></FormCard>
+      {/* <FormCard></FormCard> */}
     </div>
   );
 };

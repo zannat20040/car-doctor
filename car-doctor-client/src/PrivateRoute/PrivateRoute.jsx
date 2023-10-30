@@ -8,7 +8,11 @@ const PrivateRoute = ({children}) => {
     // console.log(location.pathname)
     const {user,loading} = useContext(AuthContext)
 
-    if(user){
+    if(loading){
+        return  <span className="loading loading-dots loading-sm"></span>
+    }
+
+     if(user){
         return  children
     }
     
