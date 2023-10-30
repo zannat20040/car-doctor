@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaLinkedinIn, FaGoogle } from "react-icons/fa";
-import { AuthContext } from "../AuthProvider/AuthProvider";
+import { AuthContext, auth } from "../AuthProvider/AuthProvider";
 import swal from "sweetalert";
+import { updateProfile } from "firebase/auth";
 
 const SignUpForm = () => {
   const { createUserWithPassword, setUser, signInWithGoogle } =
@@ -22,7 +23,16 @@ const SignUpForm = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
+
+        updateProfile(user, {
+          displayName: name, 
+        }).then(() => {
+          console.log('updated')
+        }).catch((error) => {
+          console.log(error)
+        });
         swal("Good job!", "You account has been created!", "success");
+
       })
       .catch((error) => {
         const errorMessage = error.message;
