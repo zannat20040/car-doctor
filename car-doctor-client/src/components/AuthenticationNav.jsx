@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import logo from "../assets/logo.svg";
-import FormCard from "./FormCard";
+// import FormCard from "./FormCard";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
@@ -26,10 +26,11 @@ const AuthenticationNav = () => {
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1 text-base font-medium">
             <li>
-              <a>Order</a>
+            <Link to="/user/order">Order</Link>
             </li>
             <li>
-              <a>Order Review</a>
+            <Link to="/user/orderreview">Order Review</Link>
+
             </li>
             <li>
               <a>Manage</a>
@@ -51,7 +52,6 @@ const AuthenticationNav = () => {
         </div>
       </div>
 
-      {/* <FormCard></FormCard> */}
     </div>
   );
 };

@@ -4,13 +4,18 @@ import serviceImg from "../assets/images/checkout/checkout.png";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import swal from "sweetalert";
+import { useLoaderData } from "react-router-dom";
 
 const Checkout = () => {
   const { user } = useContext(AuthContext);
 
-  // console.log(user)
+  const  productDetails = useLoaderData()
+  const {img,title, price} = productDetails
+  console.log(img,title, price)
 
   const { email, displayName } = user;
+
+
 
   const HandleOrder = (e) => {
     e.preventDefault();
@@ -28,9 +33,13 @@ const Checkout = () => {
       message: message,
       email: email,
       number: number,
+      title: title,
+      price:price,
+      img:img,
+
     };
 
-    fetch("http://localhost:5000/order", {
+    fetch("http://localhost:5000/orderreview", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +67,8 @@ const Checkout = () => {
           className="card-body bg-gray-100 rounded-md p-20 "
           onSubmit={HandleOrder}
         >
-          <div className="form-control">
+<div className="grid grid-cols-2 gap-3">
+<div className="form-control">
             <input
               type="name"
               name="name"
@@ -68,6 +78,19 @@ const Checkout = () => {
               defaultValue={displayName}
             />
           </div>
+            <div className="form-control">
+              <input
+                type="text"
+                name="id"
+                placeholder="Your Product ID"
+                className="input input-bordered bg-white border-0"
+                required
+                defaultValue={title}
+              />
+            </div>
+          </div>
+
+         
           <div className="grid grid-cols-2 gap-3">
             <div className="form-control">
               <input

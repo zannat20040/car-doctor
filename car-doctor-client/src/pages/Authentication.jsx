@@ -1,12 +1,13 @@
 import React from 'react';
 import AuthenticationNav from '../components/AuthenticationNav';
-import FormCard from '../components/FormCard';
+// import FormCard from '../components/FormCard';
+import { Outlet } from 'react-router-dom';
 
 const Authentication = () => {
     return (
         <div>
             <AuthenticationNav></AuthenticationNav>
-            <FormCard></FormCard>
+            <Outlet></Outlet>
         </div>
     );
 };

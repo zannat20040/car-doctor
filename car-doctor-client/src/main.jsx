@@ -19,6 +19,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AddServices from "./layout/AddServices";
 import ErrorPage from "./pages/ErrorPage";
 import Authentication from "./pages/Authentication";
+import OrderReviewPage from "./pages/OrderReviewPage";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,9 @@ const router = createBrowserRouter([
         loader:({params}) => fetch(`http://localhost:5000/services/${params.id}`)
       },
       {
-        path: "/checkout",
+        path: "/checkout/:id",
         element:  <PrivateRoute><Checkout></Checkout></PrivateRoute>,
+        loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
       },
       {
         path: "/addservices",
@@ -57,6 +59,11 @@ const router = createBrowserRouter([
       {
         path: "/user/signup",
         element: <SignUpForm></SignUpForm>,
+      },
+      {
+        path: "/user/orderreview",
+        element: <PrivateRoute><OrderReviewPage></OrderReviewPage></PrivateRoute>,
+        loader: ()=> fetch('http://localhost:5000/orderreview')
       },
     ],
   },

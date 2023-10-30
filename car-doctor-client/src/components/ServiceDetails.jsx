@@ -2,8 +2,9 @@ import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const ServiceDetails = ({ service }) => {
-  const { img, title, description, facility,price } = service;
+const ServiceDetails = ({ service}) => {
+  const { img, title, description, facility,price ,_id} = service;
+  console.log(_id)
   return (
     <div className="container mx-auto mt-20 flex gap-4">
       <div className="w-2/3">
@@ -78,7 +79,7 @@ const ServiceDetails = ({ service }) => {
   <div className="card-body">
     <h2 className="card-title text-3xl">Price: $ {price}</h2>
     <div className="card-actions justify-end">
-      <Link to='/checkout' className=" w-full  btn border-0 rounded-md mt-8 bg-[orangered]">Proceed Checkout</Link>
+      <Link to={`/checkout/${_id}`} className=" w-full  btn border-0 rounded-md mt-8 bg-[orangered]">Proceed Checkout</Link>
       <button className="btn border-0 w-full rounded-md mt-3 bg-[orangered]">Proceed To Cart</button>
     </div>
   </div>

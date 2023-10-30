@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaLinkedinIn, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import swal from "sweetalert";
+import icon from "../assets/images/login/login.svg";
+
 
 const LoginForm = () => {
   const { signInWithGoogle, setUser, signInWithPass,setLoading } = useContext(AuthContext);
@@ -46,7 +48,15 @@ const LoginForm = () => {
   };
 
   return (
-    <form className="card-body" onSubmit={HandleSignIn}>
+
+    <div className="hero min-h-screen ">
+    <div className="hero-content flex-row flex justify-between w-full">
+      <div className="text-center lg:text-left">
+        <img src={icon} alt="" />
+      </div>
+
+      <div className="card flex-shrink-0  w-1/2 bg-base-100 border p-8">
+      <form className="card-body" onSubmit={HandleSignIn}>
       <h1 className="text-5xl font-semibold text-center mb-8 ">Login</h1>
 
       <div className="form-control">
@@ -102,6 +112,11 @@ const LoginForm = () => {
         </Link>
       </span>
     </form>
+      </div>
+    </div>
+  </div>
+
+   
   );
 };
 

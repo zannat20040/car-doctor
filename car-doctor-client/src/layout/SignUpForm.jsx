@@ -4,6 +4,8 @@ import { FaFacebookF, FaLinkedinIn, FaGoogle } from "react-icons/fa";
 import { AuthContext, auth } from "../AuthProvider/AuthProvider";
 import swal from "sweetalert";
 import { updateProfile } from "firebase/auth";
+import icon from "../assets/images/login/login.svg";
+
 
 const SignUpForm = () => {
   const { createUserWithPassword, setUser, signInWithGoogle } =
@@ -58,7 +60,15 @@ const SignUpForm = () => {
   }
 
   return (
-    <form className="card-body" onSubmit={HandleSignUp}>
+
+    <div className="hero min-h-screen ">
+    <div className="hero-content flex-row flex justify-between w-full">
+      <div className="text-center lg:text-left">
+        <img src={icon} alt="" />
+      </div>
+
+      <div className="card flex-shrink-0  w-1/2 bg-base-100 border p-8">
+      <form className="card-body" onSubmit={HandleSignUp}>
       <h1 className="text-5xl font-semibold text-center mb-8 ">Sign up</h1>
 
       <div className="form-control">
@@ -123,6 +133,10 @@ const SignUpForm = () => {
         </Link>
       </span>
     </form>
+      </div>
+    </div>
+  </div>
+    
   );
 };
 

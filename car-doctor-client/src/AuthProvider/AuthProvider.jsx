@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        console.log('current user found')
+        // console.log('current user found')
         setUser(currentUser);
         setLoading(false);
       } else {
