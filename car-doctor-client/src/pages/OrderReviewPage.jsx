@@ -6,12 +6,11 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 import OrderLayout from '../layout/OrderLayout';
 
 const OrderReviewPage = () => {
-
     const [allOrder, setAlLOrders] = useState([])
     const {user} = useContext(AuthContext)
     // console.log(user)
     const allOrders = useLoaderData()
-    console.log(allOrders)
+    // console.log(allOrders)
 
     useEffect(()=>{
         if(user){
@@ -20,6 +19,25 @@ const OrderReviewPage = () => {
            }
     },[])
    
+
+    const HandleDelete = (id) => {
+        fetch(`http://localhost:5000/orderreview/${id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(item),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount >0) {
+              swal("Good job!", "This order has been deleted", "success");
+              const remaining = allOrder.filter((item) => item._id !== id);
+              setAlLOrders(remaining);
+            }
+          })
+      };
+    
 
     return (
         <div>
@@ -33,11 +51,10 @@ const OrderReviewPage = () => {
             allOrder.length!==0 ? (
 
                 allOrder.map(item=>(
-                    <OrderLayout key={item.id} item={item}></OrderLayout>
+                    <OrderLayout key={item._id} item={item} HandleDelete={HandleDelete}></OrderLayout>
                 ))
             ) :  
              <p className='container mx-auto text-center p-28'>You dont have order yet</p>
-
         }
       </div>
         </div>

@@ -20,6 +20,7 @@ import AddServices from "./layout/AddServices";
 import ErrorPage from "./pages/ErrorPage";
 import Authentication from "./pages/Authentication";
 import OrderReviewPage from "./pages/OrderReviewPage";
+import Order from "./pages/Order";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/user/signup",
         element: <SignUpForm></SignUpForm>,
+      },
+      {
+        path: "/user/order",
+        element: <PrivateRoute><Order></Order></PrivateRoute>
       },
       {
         path: "/user/orderreview",
