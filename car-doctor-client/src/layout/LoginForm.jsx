@@ -4,7 +4,7 @@ import { FaFacebookF, FaLinkedinIn, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import swal from "sweetalert";
 import icon from "../assets/images/login/login.svg";
-
+import axios from 'axios';
 
 const LoginForm = () => {
   const { signInWithGoogle, setUser, signInWithPass,setLoading } = useContext(AuthContext);
@@ -24,7 +24,16 @@ const LoginForm = () => {
         const user = userCredential.user;
         setUser(user);
         swal("Good job!", "You have logged in sucessfully!", "success");
-        navigate(location?.state?.redirectTo? location?.state?.redirectTo : '/')
+
+        const loggedUser = {email}
+
+        axios.post('http://localhost:5000/jwt', loggedUser, {withCredentials:true})
+        .then(res=>{
+          console.log(res.data)
+          if(res.data.success){
+            navigate(location?.state?.redirectTo? location?.state?.redirectTo : '/')
+            }
+        })
 
       })
       .catch((error) => {

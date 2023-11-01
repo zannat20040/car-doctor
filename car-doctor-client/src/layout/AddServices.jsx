@@ -46,7 +46,7 @@ const AddServices = () => {
       facility: facility,
     };
 
-    console.log(newProduct);
+    // console.log(newProduct);
 
     fetch("http://localhost:5000/services", {
       method: "POST",

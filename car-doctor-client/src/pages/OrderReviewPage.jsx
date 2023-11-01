@@ -4,6 +4,7 @@ import serviceImg from "../assets/images/checkout/checkout.png";
 import { useLoaderData, useParams } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import OrderLayout from '../layout/OrderLayout';
+import axios from 'axios';
 
 const OrderReviewPage = () => {
     const [allOrder, setAlLOrders] = useState([])
@@ -21,21 +22,33 @@ const OrderReviewPage = () => {
    
 
     const HandleDelete = (id) => {
-        fetch(`http://localhost:5000/orderreview/${id}`, {
-          method: "DELETE",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(item),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount >0) {
+      // console.log(id)
+
+      axios.delete(`http://localhost:5000/orderreview/${id}`)
+      .then(res=>{
+        console.log(res.data)
+        if (res.data.deletedCount >0) {
               swal("Good job!", "This order has been deleted", "success");
               const remaining = allOrder.filter((item) => item._id !== id);
               setAlLOrders(remaining);
             }
-          })
+      })
+        // fetch(`http://localhost:5000/orderreview/${id}`, {
+        //   method: "DELETE",
+        //   headers: {
+        //     "content-type": "application/json",
+        //   }
+        //   // body: JSON.stringify(id),
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     console.log(data)
+        //     if (data.deletedCount >0) {
+        //       swal("Good job!", "This order has been deleted", "success");
+        //       const remaining = allOrder.filter((item) => item._id !== id);
+        //       setAlLOrders(remaining);
+        //     }
+        //   })
       };
     
 

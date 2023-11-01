@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ServiceDetails = ({ service}) => {
   const { img, title, description, facility,price ,_id} = service;
-  console.log(_id)
+  // console.log(_id)
   return (
     <div className="container mx-auto mt-20 flex gap-4">
       <div className="w-2/3">

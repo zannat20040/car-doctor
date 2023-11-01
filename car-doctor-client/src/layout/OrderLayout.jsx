@@ -2,12 +2,16 @@ import React, { useContext, useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+
 const OrderLayout = ({ item,HandleDelete }) => {
   const [approved, setApproved] = useState(false);
   // console.log(allOrder)
 
   const HandleConfirmOrder = () => {
-    console.log(item);
+
+
+
     fetch("http://localhost:5000/order", {
       method: "POST",
       headers: {
@@ -17,11 +21,16 @@ const OrderLayout = ({ item,HandleDelete }) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        // console.log(data)
         if (data.insertedId) {
           setApproved(true);
           swal("Good job!", "This order has been confirmed", "success");
         }
-      });
+      })
+      .catch(error=>{
+        setApproved(false);
+        // console.log(error)
+      })
   };
 
   

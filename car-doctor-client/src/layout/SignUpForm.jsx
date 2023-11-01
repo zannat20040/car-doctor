@@ -19,7 +19,7 @@ const SignUpForm = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(name, email, password);
+    // console.log(name, email, password);
 
     createUserWithPassword(email, password)
       .then((userCredential) => {
@@ -29,7 +29,7 @@ const SignUpForm = () => {
         updateProfile(user, {
           displayName: name, 
         }).then(() => {
-          console.log('updated')
+          // console.log('updated')
         }).catch((error) => {
           console.log(error)
         });
@@ -50,7 +50,7 @@ const SignUpForm = () => {
     .then((result) => {
       const user = result.user;
       setUser(user);
-      console.log(user)
+      // console.log(user)
       swal("Good job!", "You have logged in sucessfully!", "success");
     })
     .catch((error) => {

@@ -11,7 +11,7 @@ const Checkout = () => {
 
   const  productDetails = useLoaderData()
   const {img,title, price} = productDetails
-  console.log(img,title, price)
+  // console.log(img,title, price)
 
   const { email, displayName } = user;
 
@@ -26,7 +26,7 @@ const Checkout = () => {
     const email = form.email.value;
     const number = form.number.value;
 
-    console.log(name, message, number, email);
+    // console.log(name, message, number, email);
 
     const orderInfo = {
       name: name,
